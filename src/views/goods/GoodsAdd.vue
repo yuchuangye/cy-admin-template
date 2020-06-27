@@ -1,15 +1,16 @@
 <template>
-  <div id="app">
-    <router-view />
+  <div id="goods-add">
+    Hello Word to GoodsADD...
   </div>
 </template>
 
 <script>
   export default {
-    name: 'App'
+    name: 'GoodsADD'
   }
 </script>
 
 <style lang="stylus" scoped>
 
 </style>
+
