@@ -84,11 +84,7 @@
         const res = await login({ username, password })
         this.loading = false
         if (res.status == 1) {  //账号或密码错误
-          this.$message({
-            type: 'error',
-            message: res.msg,
-            duration: 1500
-          })
+          this.$message.error(res.msg)
           return
         }
         localStorage.setItem('token', res.token)
@@ -117,7 +113,7 @@
       width: 318px
       padding: 20px
       padding-bottom: 70px
-      border: 1px solid #ebeef5
+      border: 1px solid $colorK
       border-top: 10px solid $colorB
       background-color: $colorA
       box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1)

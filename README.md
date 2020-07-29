@@ -1,14 +1,11 @@
-### CY-ADMIN-TEMPLATE
+# CY-ADMIN-TEMPLATE
 
 > cy-admin-template 是根据 vue-admin-template 仿写的用于个人快速搭建后台管理系统的简易模板
 
 ​        最初写这个项目是因为 vue-element-admin 功能太多、太复杂，使用起来有一定学习成本。对于搭建个人项目来说我并不需要用到它里面的很多东西，但是本人挺喜欢它的设计界面所以就根据  vue-admin-template 写了一个简化版，可以用于快速搭建后台管理系统。
 
-​	目前是第一版，之后可能会继续改进第二版、第三版......
 
-
-
-#### Build Setup
+## Build Setup
 
 ------
 
@@ -26,7 +23,7 @@ npm install
 npm run serve
 ```
 
-#### Licence
+## Licence
 
 ------
 

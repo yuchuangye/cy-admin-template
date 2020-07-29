@@ -1,5 +1,5 @@
 <template>
-  <div id="nav-bar">
+  <div class="nav-bar">
     <div class="fold-icon-wrap" @click="toggleMenuCollapse">
       <i class="el-icon-s-unfold" v-if="!isCollapse"></i>
       <i class="el-icon-s-fold" v-if="isCollapse"></i>
@@ -69,11 +69,11 @@
 
 <style lang="stylus" scoped>
   @import "../assets/stylus/variable.styl"
-  #nav-bar
+  .nav-bar
     height: 50px 
     .fold-icon-wrap
       float: left
-      i[class^="el-icon"]
+      i
         width: 20px
         height: 20px 
         font-size: $font-sm
@@ -86,7 +86,7 @@
         display: flex
         align-items: center
         height: 50px
-        i[class^="el-icon"]
+        i
           position: relative
           top: 8px
       .el-avatar--square

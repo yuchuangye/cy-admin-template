@@ -1,5 +1,11 @@
 <template>
-  <div id="slide-bar">
+  <div class="slide-bar">
+
+    <div class="slide-bar-logo">
+      <img class="logo" src="..//assets/images/nav_logo.png" alt="nav_logo">
+      <span class="title">wang-moba</span>
+    </div>
+
     <el-menu 
       router
       text-color="#bfcbd9"
@@ -59,7 +65,7 @@
         <span slot="title">权限管理</span>
       </el-menu-item>
 
-       <el-menu-item class="github-link">
+      <el-menu-item class="github-link">
         <a href="https://github.com/yuchuangye" target="_blank">
           <i class="el-icon-link"></i>
           <span slot="title">友情链接</span>
@@ -83,17 +89,33 @@
 
 <style lang="stylus" scoped>
   @import "../assets/stylus/variable.styl"
-  #slide-bar
+  .slide-bar
+
+    .slide-bar-logo
+      color: $colorA
+      padding: 0 20px
+      height: 50px
+      line-height: 50px
+      background-color: $colorJ
+      overflow: hidden
+      .logo
+        width: 32px
+        height: 32px  
+        vertical-align: middle
+      .title
+        margin-left: 15px
+        font-weight: 700   
+
     .el-menu
       border: none
 
-    .el-menu i[class^="el-icon"] 
+    .el-menu i
       color: $colorD
       margin-right: 10px 
-    .el-menu .el-menu-item.is-active i[class^="el-icon"] 
-      color: $colorB
-    .el-menu .el-menu-item.is-active.github-link i[class^="el-icon"]
+    .el-menu .github-link i
       color: $colorD !important
+    .el-menu .el-menu-item.is-active i
+      color: $colorB
 
     .el-menu .el-submenu li,
     >>> .el-menu .el-submenu ul .el-submenu__title

@@ -1,5 +1,5 @@
 <template>
-  <div id="bread-crumb" v-if="isBread">
+  <div class="bread-crumb" v-if="isBread">
     <el-breadcrumb class="app-breadcrumb" separator="/">
       <transition-group name="breadcrumb">
         <el-breadcrumb-item v-for="(item,index) in breadList" :key="item.path">
@@ -56,11 +56,10 @@
       },
       // 控制面包屑和头像在不同屏幕宽度下的显示和隐藏
       handleBreadCrumb () {
-        let deviceWidth = window.innerWidth 
-          || document.documentElement.clientWidth || document.body.clientWidth
+        let deviceWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
         this.$nextTick(() => {
 
-          let breadWidth = document.querySelector('#bread-crumb').clientWidth
+          let breadWidth = document.querySelector('.bread-crumb').clientWidth
           let rateDB = Number((breadWidth / deviceWidth).toFixed(3))
 
           if (rateDB <= 0.643) {
@@ -82,20 +81,18 @@
 
 <style lang="stylus" scoped>
   @import "../assets/stylus/variable.styl"
-  #bread-crumb
+  .bread-crumb
     float: left
     height: 50px 
-    .app-breadcrumb.el-breadcrumb 
-      display: inline-block
+    .el-breadcrumb 
       font-size: $font-xxs
       line-height: 50px
       margin-left: 15px
       margin-top: -2px
-      .el-breadcrumb__inner
-        .no-redirect 
-          color: $colorH 
-          cursor: text
-        .yes-redirect
-          font-weight: normal 
+      .no-redirect 
+        color: $colorH 
+        cursor: text
+      .yes-redirect
+        font-weight: normal 
 
 </style>

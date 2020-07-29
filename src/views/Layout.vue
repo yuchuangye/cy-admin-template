@@ -27,14 +27,15 @@
       </el-container>
 
     </el-container>
+
     <div class="menu-bg" v-if="isOpen" @click="isOpen=false"></div>
+
   </div>
 </template>
 
 <script>
   import SlideBar from '@/components/SlideBar'
   import NavBar from '@/components/NavBar'
-
   export default {
     name: 'Home',
     data () {
@@ -49,7 +50,7 @@
       window.addEventListener('resize', this.monitor)
     },
     beforeDestroy () {
-      window.removeEventListener('resize', this.monitor)
+      window.removeEventListener('resize', this.monitor, false)
     },
     watch: {
       $route () {
@@ -62,8 +63,7 @@
     methods: {
       // 判断浏览器窗口宽度
       monitor () {
-        let deviceWidth = window.innerWidth 
-        || document.documentElement.clientWidth || document.body.clientWidth
+        let deviceWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
         // 屏幕小于 768px 时 侧边菜单定位位移
         if (deviceWidth < 768) {
           this.isFold = true
