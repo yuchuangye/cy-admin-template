@@ -1,11 +1,6 @@
 <template>
   <div class="slide-bar">
 
-    <div class="slide-bar-logo">
-      <img class="logo" src="..//assets/images/nav_logo.png" alt="nav_logo">
-      <span class="title">wang-moba</span>
-    </div>
-
     <el-menu 
       router
       text-color="#bfcbd9"
@@ -90,21 +85,6 @@
 <style lang="stylus" scoped>
   @import "../assets/stylus/variable.styl"
   .slide-bar
-
-    .slide-bar-logo
-      color: $colorA
-      padding: 0 20px
-      height: 50px
-      line-height: 50px
-      background-color: $colorJ
-      overflow: hidden
-      .logo
-        width: 32px
-        height: 32px  
-        vertical-align: middle
-      .title
-        margin-left: 15px
-        font-weight: 700   
 
     .el-menu
       border: none
