@@ -1,78 +1,82 @@
 <template>
   <div class="slide-bar">
 
-    <div class="slide-bar-logo">
+    <div class="slide-bar-logo" v-if="$store.state.isLogo">
       <img class="logo" src="..//assets/images/nav_logo.png" alt="nav_logo">
-      <span class="title">wang-moba</span>
+      <span class="title">cy-admin</span>
     </div>
 
-    <el-menu 
-      router
-      text-color="#bfcbd9"
-      background-color="#304156"
-      active-text-color="#409eff"
-      :unique-opened="true"
-      :default-active="$route.path"
-      :collapse="isCollapse"
-      :collapse-transition="false"
-    >
-      <el-menu-item index="/home">
-        <i class="el-icon-s-home"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
+    <div class="menu-scroll" :class="{'calc-logo': $store.state.isLogo}">
 
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-s-goods"></i>
-          <span slot="title">商品管理</span>
-        </template>
-        <el-menu-item index="/goods/list">商品列表</el-menu-item>
-        <el-menu-item index="/goods/add">添加商品</el-menu-item>
-        <el-menu-item index="/goods/brand">品牌管理</el-menu-item>
-      </el-submenu>
-
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-document"></i>
-          <span slot="title">订单管理</span>
-        </template>
-        <el-menu-item index="/order/list">
-          <i class="el-icon-guide"></i>
-          <span slot="title">订单列表</span>
+      <el-menu 
+        router
+        text-color="#bfcbd9"
+        background-color="#304156"
+        active-text-color="#409eff"
+        :unique-opened="$store.state.uinqueSlideOpen"
+        :default-active="$route.path"
+        :collapse="isCollapse"
+        :collapse-transition="false"
+      >
+        <el-menu-item index="/home">
+          <i class="el-icon-s-home"></i>
+          <span slot="title">首页</span>
         </el-menu-item>
-        <el-menu-item index="/order/set">
-          <i class="el-icon-setting"></i>
-          <span slot="title">订单设置</span>
-        </el-menu-item>
-      </el-submenu>
 
-      <el-submenu index="4">
-        <template slot="title">
-          <i class="el-icon-help"></i>
-          <span slot="title">营销管理</span>
-        </template>
-        <el-menu-item index="/sale/seckill">秒杀活动</el-menu-item>
-        <el-menu-item index="/sale/adset">广告设置</el-menu-item>
-        <el-submenu index="4-3">
-          <span slot="title">推荐管理</span>
-          <el-menu-item index="/sale/recomd/brand">品牌推荐</el-menu-item>
-          <el-menu-item index="/sale/recomd/special">专题推荐</el-menu-item>
+        <el-submenu index="2">
+          <template slot="title">
+            <i class="el-icon-s-goods"></i>
+            <span slot="title">商品管理</span>
+          </template>
+          <el-menu-item index="/goods/list">商品列表</el-menu-item>
+          <el-menu-item index="/goods/add">添加商品</el-menu-item>
+          <el-menu-item index="/goods/brand">品牌管理</el-menu-item>
         </el-submenu>
-      </el-submenu>
 
-      <el-menu-item index="/permission">
-        <i class="el-icon-question"></i>
-        <span slot="title">权限管理</span>
-      </el-menu-item>
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-document"></i>
+            <span slot="title">订单管理</span>
+          </template>
+          <el-menu-item index="/order/list">
+            <i class="el-icon-guide"></i>
+            <span slot="title">订单列表</span>
+          </el-menu-item>
+          <el-menu-item index="/order/set">
+            <i class="el-icon-setting"></i>
+            <span slot="title">订单设置</span>
+          </el-menu-item>
+        </el-submenu>
 
-      <el-menu-item class="github-link">
-        <a href="https://github.com/yuchuangye" target="_blank">
-          <i class="el-icon-link"></i>
-          <span slot="title">友情链接</span>
-        </a>
-      </el-menu-item>
-     
-    </el-menu>
+        <el-submenu index="4">
+          <template slot="title">
+            <i class="el-icon-help"></i>
+            <span slot="title">营销管理</span>
+          </template>
+          <el-menu-item index="/sale/seckill">秒杀活动</el-menu-item>
+          <el-menu-item index="/sale/adset">广告设置</el-menu-item>
+          <el-submenu index="4-3">
+            <span slot="title">推荐管理</span>
+            <el-menu-item index="/sale/recomd/brand">品牌推荐</el-menu-item>
+            <el-menu-item index="/sale/recomd/special">专题推荐</el-menu-item>
+          </el-submenu>
+        </el-submenu>
+
+        <el-menu-item index="/permission">
+          <i class="el-icon-question"></i>
+          <span slot="title">权限管理</span>
+        </el-menu-item>
+
+        <el-menu-item class="github-link">
+          <a href="https://github.com/yuchuangye" target="_blank">
+            <i class="el-icon-link"></i>
+            <span slot="title">友情链接</span>
+          </a>
+        </el-menu-item>
+      
+      </el-menu>
+
+    </div>
   </div>
 </template>
 
@@ -104,9 +108,17 @@
         vertical-align: middle
       .title
         margin-left: 15px
-        font-weight: 700   
+        font-weight: 700
+    
+    .menu-scroll
+      overflow: auto
+      height: 100vh
+      width: 240px
+      &.calc-logo
+        height: calc(100vh - 50px) 
 
     .el-menu
+      width: 220px 
       border: none
 
     .el-menu i

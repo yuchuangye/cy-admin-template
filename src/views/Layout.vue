@@ -14,10 +14,15 @@
       </el-aside>
 
       <el-container>
-        <el-header>
+        <!-- <el-header>
           <nav-bar :mobile="isFold" @openMenu="isOpen=true"></nav-bar>
-        </el-header>
-        <el-main>
+        </el-header> -->
+        <el-main :class="{'fix-header': $store.state.fixHeader}">
+          <el-header 
+            :class="{'fix-header': $store.state.fixHeader, 
+            'calc-header': $store.state.fixHeader && $store.state.isCollapse}">
+            <nav-bar :mobile="isFold" @openMenu="isOpen=true"></nav-bar>
+          </el-header>
           <transition name="fade-transform" mode="out-in">
             <keep-alive>
               <router-view />
@@ -27,8 +32,18 @@
       </el-container>
 
     </el-container>
+    <!-- end of container -->
 
     <div class="menu-bg" v-if="isOpen" @click="isOpen=false"></div>
+    <!-- end of slideBar-bg -->
+
+    <setting-panel></setting-panel>
+    
+    <el-backtop 
+      v-show="$store.state.isTop" 
+      target=".el-main" 
+      :visibility-height="400">
+    </el-backtop>
 
   </div>
 </template>
@@ -36,6 +51,7 @@
 <script>
   import SlideBar from '@/components/SlideBar'
   import NavBar from '@/components/NavBar'
+  import SettingPanel from '@/components/SettingPanel'
   export default {
     name: 'Home',
     data () {
@@ -74,11 +90,12 @@
           this.isOpen = false
           this.isFold = false
         }
-      },
+      }
     },
     components: {
       SlideBar,
-      NavBar
+      NavBar,
+      SettingPanel
     }
   }
 </script>
@@ -92,15 +109,29 @@
       height: 50px !important
       line-height: 50px
       box-shadow: 0 1px 4px rgba(0, 21, 41, .08)
+      margin: 0 -20px
+      margin-bottom: 20px
+      overflow: hidden 
+      transition: width .3s
+      &.fix-header
+        position: fixed
+        top: 0
+        margin-bottom: 0 
+        width: calc(100vw - 220px)
+      &.calc-header
+        width: calc(100vw - 64px)  
+      
+    .el-main 
+      background-color: $colorA
+      overflow-x: hidden
+      padding-top: 0
+      &.fix-header
+        padding-top: 70px 
     
     .el-aside 
       background-color: $colorC
       overflow: hidden
       transition: width .3s
-
-    .el-main 
-      background-color: $colorA
-      overflow-x: hidden
 
     .menu-collapse
       width: 64px !important
@@ -110,7 +141,7 @@
       top: 0
       left: 0
       transform: translateX(-101%) 
-      z-index: 999 
+      z-index: 990011
       height: 100%
     .menu-open
       transform: translateX(0)
@@ -121,7 +152,7 @@
       position: fixed
       top: 0
       left: 0
-      z-index: 990 
+      z-index: 990000
       width: 100%
       height: 100%
       background-color: rgba(0, 0, 0, .3)    

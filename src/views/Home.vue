@@ -17,8 +17,9 @@
     font-size: $font-xl
     font-weight: 700
     text-align: center
-    margin-top: 50px
-    letter-spacing: 6px 
+    padding-top: 50px
+    letter-spacing: 6px
+    height: 3000px 
 
 </style>
 
